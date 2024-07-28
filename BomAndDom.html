@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example BOM AND DOM</title>
+</head>
+<body>
+    <h1>Examples of different models!</h1>
+    <button onclick="openNewWindow()">Open a new window</button>
+    <button onclick="getBrowserInfo()">Browser information</button>
+    <button onclick="getScreenSize()">Screen size</button>
+    <button onclick="navigatePage()">Go to next page</button>
+    <button onclick="goBack()">Back</button>
+    <button onclick="goForward()">Forward</button>
+    <button onclick="createAndAppendElement()">Create an element</button>
+    <div id="myDiv"></div>
+    <button onclick="removeElement()">Delete item</button>
+    <div id="myDiv2">
+        <p>Element to remove</p>
+    </div>
+    <button onclick="changeElementColor()">Change color</button>
+    <div id="myDiv3" style="width: 100px; height: 100px; background-color: brown;"></div>
+    <button onclick="selectText()">Edit text</button>
+    <p id="myParagraf">Click the button to select</p>
+    <button onclick="readFromLocalStorage()">Read from Local Storage</button>
+    <button onclick="saveToLocalStorage()">Save to Local Storage</button>
+    <p id="localStorageOutput"></p>
+
+    <script>
+        function saveToLocalStorage() {
+            localStorage.setItem('key', 'Our first value in local storage')
+        }
+
+        function readFromLocalStorage() {
+            const value = localStorage.getItem('key');
+            document.getElementById("localStorageOutput").textContent = value;
+        }
+
+        function selectText() {
+            const paragraf = document.getElementById('myParagraf');
+            paragraf.textContent = 'The text has been modified!';
+        }
+
+        function changeElementColor() {
+            const elementToChange = document.getElementById('myDiv3');
+            elementToChange.style.backgroundColor = 'blue';
+        }
+        
+        function removeElement() {
+            const elementToRemove = document.getElementById('myDiv2');
+            elementToRemove.parentNode.removeChild(elementToRemove);
+        }
+        
+        function createAndAppendElement() {
+            const div = document.createElement('myDiv');
+            div.textContent = 'New element';
+            document.getElementById('myDiv').appendChild(div);
+        }
+
+        function goBack() {
+            history.back();
+        }
+
+        function goForward() {
+            history.forward();
+        }
+
+        function navigatePage() {
+            location.href = 'https://www.google.com/?hl=RU';
+        }
+
+        function getScreenSize() {
+            const screenSize = 'Screen width: ' + window.screen.width + ', ' + window.screen.height;
+            alert(screenSize);
+        }
+
+        function openNewWindow() {
+            window.open("https://www.google.com/?hl=RU", '_blank')
+        }
+
+        function getBrowserInfo() {
+            const browserInfo = 'Browser: ' + navigator.userAgent;
+            alert(browserInfo);
+        }
+
+        function delayedFunction() {
+            setTimeout(function () {
+                alert('Function executed after delay');
+            }, 2000)
+        }
+        console.log(delayedFunction());
+    </script>
+</body>
+</html>
